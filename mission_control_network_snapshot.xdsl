@@ -1,0 +1,528 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This file was created by ACADEMIC version of SMILE -->
+<smile version="1.0" id="IntegratedMissionControl" numsamples="10000" discsamples="10000">
+	<nodes>
+		<cpt id="Current">
+			<state id="Low" />
+			<state id="Medium" />
+			<state id="High" />
+			<probabilities>0.5 0.35 0.15</probabilities>
+		</cpt>
+		<cpt id="Wind">
+			<state id="Low" />
+			<state id="Medium" />
+			<state id="High" />
+			<probabilities>0.55 0.3 0.15</probabilities>
+		</cpt>
+		<cpt id="Waves">
+			<state id="Low" />
+			<state id="Medium" />
+			<state id="High" />
+			<probabilities>0.5 0.35 0.15</probabilities>
+		</cpt>
+		<cpt id="MissionPhase">
+			<state id="Undocking" />
+			<state id="Transit" />
+			<state id="Inspection" />
+			<state id="DockingApproach" />
+			<state id="Docking" />
+			<state id="Charging" />
+			<probabilities>0.1 0.3 0.3 0.1 0.15 0.05</probabilities>
+		</cpt>
+		<cpt id="TaskComplexity">
+			<state id="Low" />
+			<state id="Medium" />
+			<state id="High" />
+			<parents>MissionPhase</parents>
+			<probabilities>0.7 0.25 0.05 0.8 0.15 0.05 0.3 0.4 0.3 0.1 0.3 0.6 0.05 0.2 0.75 0.95 0.05 0</probabilities>
+		</cpt>
+		<cpt id="TaskCriticality">
+			<state id="Routine" />
+			<state id="Important" />
+			<state id="Critical" />
+			<parents>MissionPhase</parents>
+			<probabilities>0.3 0.4 0.3 0.6 0.3 0.1 0.4 0.4 0.2 0.1 0.3 0.6 0.05 0.15 0.8 0.9 0.1 0</probabilities>
+		</cpt>
+		<cpt id="BatteryLevel">
+			<state id="High" />
+			<state id="Medium" />
+			<state id="Low" />
+			<state id="Critical" />
+			<probabilities>0.4 0.35 0.2 0.05</probabilities>
+		</cpt>
+		<cpt id="USBLStrength">
+			<state id="Strong" />
+			<state id="Moderate" />
+			<state id="Weak" />
+			<state id="Lost" />
+			<probabilities>0.5 0.3 0.15 0.05</probabilities>
+		</cpt>
+		<cpt id="PoseEstimationQuality">
+			<state id="High" />
+			<state id="Medium" />
+			<state id="Low" />
+			<parents>USBLStrength</parents>
+			<probabilities>0.8 0.15 0.05 0.5 0.35 0.15 0.2 0.4 0.4 0.05 0.25 0.7</probabilities>
+		</cpt>
+		<cpt id="Speed">
+			<state id="Safe" />
+			<state id="Moderate" />
+			<state id="High" />
+			<parents>Current</parents>
+			<probabilities>0.7 0.25 0.05 0.5 0.35 0.15 0.3 0.4 0.3</probabilities>
+		</cpt>
+		<cpt id="Altitude">
+			<state id="Safe" />
+			<state id="Marginal" />
+			<state id="Unsafe" />
+			<probabilities>0.65 0.25 0.1</probabilities>
+		</cpt>
+		<cpt id="CameraQuality">
+			<state id="Excellent" />
+			<state id="Good" />
+			<state id="Poor" />
+			<state id="Failed" />
+			<probabilities>0.5 0.3 0.15 0.05</probabilities>
+		</cpt>
+		<cpt id="Fatigue">
+			<state id="Low" />
+			<state id="Medium" />
+			<state id="High" />
+			<probabilities>0.5 0.35 0.15</probabilities>
+		</cpt>
+		<cpt id="Stress">
+			<state id="Low" />
+			<state id="Medium" />
+			<state id="High" />
+			<probabilities>0.5 0.35 0.15</probabilities>
+		</cpt>
+		<cpt id="Attention">
+			<state id="Low" />
+			<state id="Medium" />
+			<state id="High" />
+			<probabilities>0.2 0.3 0.5</probabilities>
+		</cpt>
+		<cpt id="OperatorWorkload">
+			<state id="Low" />
+			<state id="Medium" />
+			<state id="High" />
+			<parents>TaskComplexity Current Wind Waves</parents>
+			<probabilities>0.8 0.15 0.05 0.8 0.15 0.05 0.8 0.15 0.05 0.8 0.15 0.05 0.8 0.15 0.05 0.7 0.25 0.05 0.8 0.15 0.05 0.7 0.25 0.05 0.6 0.3 0.1 0.8 0.15 0.05 0.8 0.15 0.05 0.7 0.25 0.05 0.8 0.15 0.05 0.7 0.25 0.05 0.6 0.3 0.1 0.7 0.25 0.05 0.6 0.3 0.1 0.5 0.35 0.15 0.8 0.15 0.05 0.7 0.25 0.05 0.6 0.3 0.1 0.7 0.25 0.05 0.6 0.3 0.1 0.5 0.35 0.15 0.6 0.3 0.1 0.5 0.35 0.15 0.4 0.4 0.2 0.8 0.15 0.05 0.8 0.15 0.05 0.7 0.25 0.05 0.8 0.15 0.05 0.7 0.25 0.05 0.6 0.3 0.1 0.7 0.25 0.05 0.6 0.3 0.1 0.5 0.35 0.15 0.8 0.15 0.05 0.7 0.25 0.05 0.6 0.3 0.1 0.7 0.25 0.05 0.6 0.3 0.1 0.5 0.35 0.15 0.6 0.3 0.1 0.5 0.35 0.15 0.4 0.4 0.2 0.7 0.25 0.05 0.6 0.3 0.1 0.5 0.35 0.15 0.6 0.3 0.1 0.5 0.35 0.15 0.4 0.4 0.2 0.5 0.35 0.15 0.4 0.4 0.2 0.3 0.45 0.25 0.8 0.15 0.05 0.7 0.25 0.05 0.6 0.3 0.1 0.7 0.25 0.05 0.6 0.3 0.1 0.5 0.35 0.15 0.6 0.3 0.1 0.5 0.35 0.15 0.4 0.4 0.2 0.7 0.25 0.05 0.6 0.3 0.1 0.5 0.35 0.15 0.6 0.3 0.1 0.5 0.35 0.15 0.4 0.4 0.2 0.5 0.35 0.15 0.4 0.4 0.2 0.3 0.45 0.25 0.6 0.3 0.1 0.5 0.35 0.15 0.4 0.4 0.2 0.5 0.35 0.15 0.4 0.4 0.2 0.3 0.45 0.25 0.4 0.4 0.2 0.3 0.45 0.25 0.2 0.45 0.35</probabilities>
+		</cpt>
+		<cpt id="CognitiveLoad">
+			<state id="Low" />
+			<state id="Medium" />
+			<state id="High" />
+			<state id="Overload" />
+			<parents>Attention OperatorWorkload</parents>
+			<probabilities>0.3 0.4 0.25 0.05 0.15 0.3 0.4 0.15 0.05 0.2 0.45 0.3 0.5 0.35 0.12 0.03 0.3 0.4 0.25 0.05 0.15 0.3 0.4 0.15 0.7 0.25 0.04 0.01 0.5 0.35 0.12 0.03 0.3 0.4 0.25 0.05</probabilities>
+		</cpt>
+		<cpt id="SituationalAwareness">
+			<state id="High" />
+			<state id="Medium" />
+			<state id="Low" />
+			<state id="VeryLow" />
+			<parents>Attention CognitiveLoad</parents>
+			<probabilities>0.2 0.4 0.3 0.1 0.1 0.3 0.4 0.2 0.05 0.2 0.45 0.3 0.02 0.1 0.38 0.5 0.5 0.35 0.12 0.03 0.3 0.4 0.25 0.05 0.15 0.35 0.35 0.15 0.05 0.2 0.45 0.3 0.75 0.2 0.04 0.01 0.55 0.3 0.12 0.03 0.35 0.4 0.2 0.05 0.15 0.35 0.35 0.15</probabilities>
+		</cpt>
+		<cpt id="HumanDecisionReliability">
+			<state id="VeryHigh" />
+			<state id="High" />
+			<state id="Medium" />
+			<state id="Low" />
+			<state id="VeryLow" />
+			<parents>Fatigue Stress SituationalAwareness</parents>
+			<probabilities>0.7 0.22 0.06 0.01 0.01 0.55 0.3 0.12 0.02 0.01 0.35 0.35 0.22 0.06 0.02 0.2 0.3 0.3 0.15 0.05 0.55 0.3 0.12 0.02 0.01 0.4 0.35 0.18 0.05 0.02 0.25 0.35 0.25 0.1 0.05 0.12 0.23 0.35 0.2 0.1 0.4 0.35 0.18 0.05 0.02 0.28 0.35 0.25 0.09 0.03 0.15 0.28 0.32 0.17 0.08 0.07000000000000001 0.18 0.3 0.28 0.17 0.55 0.3 0.12 0.02 0.01 0.4 0.35 0.18 0.05 0.02 0.25 0.35 0.25 0.1 0.05 0.12 0.23 0.35 0.2 0.1 0.4 0.35 0.18 0.05 0.02 0.28 0.35 0.25 0.09 0.03 0.15 0.28 0.32 0.17 0.08 0.07000000000000001 0.18 0.3 0.28 0.17 0.28 0.35 0.25 0.09 0.03 0.18 0.3 0.3 0.15 0.07000000000000001 0.1 0.22 0.33 0.23 0.12 0.04 0.13 0.28 0.33 0.22 0.4 0.35 0.18 0.05 0.02 0.28 0.35 0.25 0.09 0.03 0.15 0.28 0.32 0.17 0.08 0.07000000000000001 0.18 0.3 0.28 0.17 0.28 0.35 0.25 0.09 0.03 0.18 0.3 0.3 0.15 0.07000000000000001 0.1 0.22 0.33 0.23 0.12 0.04 0.13 0.28 0.33 0.22 0.18 0.3 0.3 0.15 0.07000000000000001 0.1 0.22 0.33 0.23 0.12 0.05 0.15 0.3 0.32 0.18 0.02 0.08 0.2 0.35 0.35</probabilities>
+		</cpt>
+		<cpt id="NavigationReliability">
+			<state id="High" />
+			<state id="Medium" />
+			<state id="Low" />
+			<state id="VeryLow" />
+			<parents>PoseEstimationQuality Current</parents>
+			<probabilities>0.8 0.15 0.04 0.01 0.65 0.25 0.08 0.02 0.45 0.35 0.15 0.05 0.55 0.3 0.12 0.03 0.4 0.35 0.2 0.05 0.25 0.35 0.3 0.1 0.3 0.35 0.25 0.1 0.18 0.32 0.35 0.15 0.1 0.2 0.4 0.3</probabilities>
+		</cpt>
+		<cpt id="PerceptionReliability">
+			<state id="High" />
+			<state id="Medium" />
+			<state id="Low" />
+			<state id="VeryLow" />
+			<parents>CameraQuality Current</parents>
+			<probabilities>0.85 0.12 0.02 0.01 0.7 0.22 0.06 0.02 0.5 0.35 0.12 0.03 0.65 0.25 0.08 0.02 0.5 0.35 0.12 0.03 0.35 0.4 0.2 0.05 0.35 0.4 0.2 0.05 0.2 0.35 0.35 0.1 0.1 0.25 0.45 0.2 0.05 0.15 0.4 0.4 0.02 0.08 0.3 0.6 0.01 0.04 0.2 0.75</probabilities>
+		</cpt>
+		<cpt id="ControlStability">
+			<state id="High" />
+			<state id="Medium" />
+			<state id="Low" />
+			<state id="VeryLow" />
+			<parents>Speed Altitude BatteryLevel</parents>
+			<probabilities>0.85 0.12 0.02 0.01 0.75 0.2 0.04 0.01 0.6 0.3 0.08 0.02 0.4 0.35 0.2 0.05 0.7 0.22 0.06 0.02 0.6 0.28 0.1 0.02 0.45 0.35 0.15 0.05 0.3 0.35 0.25 0.1 0.5 0.35 0.12 0.03 0.4 0.35 0.2 0.05 0.25 0.35 0.3 0.1 0.15 0.25 0.4 0.2 0.7 0.22 0.06 0.02 0.6 0.28 0.1 0.02 0.45 0.35 0.15 0.05 0.3 0.35 0.25 0.1 0.55 0.3 0.12 0.03 0.45 0.35 0.15 0.05 0.3 0.35 0.25 0.1 0.18 0.3 0.35 0.17 0.4 0.35 0.2 0.05 0.3 0.35 0.25 0.1 0.18 0.3 0.35 0.17 0.1 0.2 0.4 0.3 0.5 0.35 0.12 0.03 0.4 0.35 0.2 0.05 0.25 0.35 0.3 0.1 0.15 0.25 0.4 0.2 0.35 0.4 0.2 0.05 0.25 0.35 0.3 0.1 0.15 0.28 0.38 0.19 0.08 0.17 0.4 0.35 0.2 0.3 0.35 0.15 0.12 0.23 0.4 0.25 0.07000000000000001 0.15 0.38 0.4 0.03 0.1 0.3 0.57</probabilities>
+		</cpt>
+		<cpt id="AutonomousControlReliability">
+			<state id="VeryHigh" />
+			<state id="High" />
+			<state id="Medium" />
+			<state id="Low" />
+			<state id="VeryLow" />
+			<parents>NavigationReliability PerceptionReliability ControlStability</parents>
+			<probabilities>0.75 0.18 0.05 0.01 0.01 0.6 0.27 0.1 0.02 0.01 0.4 0.35 0.18 0.05 0.02 0.25 0.35 0.25 0.1 0.05 0.6 0.27 0.1 0.02 0.01 0.45 0.33 0.16 0.04 0.02 0.3 0.35 0.24 0.08 0.03 0.18 0.3 0.3 0.15 0.07000000000000001 0.4 0.35 0.18 0.05 0.02 0.28 0.35 0.25 0.09 0.03 0.18 0.3 0.3 0.15 0.07000000000000001 0.1 0.22 0.33 0.23 0.12 0.25 0.35 0.25 0.1 0.05 0.16 0.29 0.3 0.17 0.08 0.1 0.22 0.33 0.23 0.12 0.05 0.15 0.3 0.32 0.18 0.6 0.27 0.1 0.02 0.01 0.45 0.33 0.16 0.04 0.02 0.3 0.35 0.24 0.08 0.03 0.18 0.3 0.3 0.15 0.07000000000000001 0.45 0.33 0.16 0.04 0.02 0.32 0.35 0.22 0.08 0.03 0.2 0.32 0.3 0.13 0.05 0.12 0.25 0.33 0.2 0.1 0.3 0.35 0.24 0.08 0.03 0.2 0.32 0.3 0.13 0.05 0.12 0.25 0.33 0.2 0.1 0.07000000000000001 0.18 0.32 0.28 0.15 0.18 0.3 0.3 0.15 0.07000000000000001 0.12 0.25 0.33 0.2 0.1 0.07000000000000001 0.18 0.32 0.28 0.15 0.04 0.12 0.26 0.33 0.25 0.4 0.35 0.18 0.05 0.02 0.28 0.35 0.25 0.09 0.03 0.18 0.3 0.3 0.15 0.07000000000000001 0.1 0.22 0.33 0.23 0.12 0.28 0.35 0.25 0.09 0.03 0.18 0.3 0.3 0.15 0.07000000000000001 0.12 0.25 0.33 0.2 0.1 0.07000000000000001 0.18 0.32 0.28 0.15 0.18 0.3 0.3 0.15 0.07000000000000001 0.12 0.25 0.33 0.2 0.1 0.07000000000000001 0.18 0.32 0.28 0.15 0.04 0.12 0.26 0.33 0.25 0.1 0.22 0.33 0.23 0.12 0.07000000000000001 0.18 0.32 0.28 0.15 0.04 0.12 0.26 0.33 0.25 0.02 0.08 0.2 0.35 0.35 0.25 0.35 0.25 0.1 0.05 0.16 0.29 0.3 0.17 0.08 0.1 0.22 0.33 0.23 0.12 0.05 0.15 0.3 0.32 0.18 0.16 0.29 0.3 0.17 0.08 0.1 0.22 0.33 0.23 0.12 0.06 0.16 0.31 0.3 0.17 0.03 0.1 0.25 0.35 0.27 0.1 0.22 0.33 0.23 0.12 0.06 0.16 0.31 0.3 0.17 0.03 0.1 0.25 0.35 0.27 0.02 0.06 0.18 0.34 0.4 0.05 0.15 0.3 0.32 0.18 0.03 0.1 0.25 0.35 0.27 0.02 0.06 0.18 0.34 0.4 0.01 0.04 0.12 0.28 0.55</probabilities>
+		</cpt>
+		<cpt id="ArUcoMarkersVisible">
+			<state id="All" />
+			<state id="Some" />
+			<state id="None" />
+			<probabilities>0.85 0.12 0.03</probabilities>
+		</cpt>
+		<cpt id="DockingStationDetection">
+			<state id="Detected" />
+			<state id="Partial" />
+			<state id="NotDetected" />
+			<parents>ArUcoMarkersVisible CameraQuality</parents>
+			<probabilities>0.95 0.04 0.01 0.85 0.12 0.03 0.6 0.3 0.1 0.15 0.35 0.5 0.7 0.25 0.05 0.55 0.35 0.1 0.3 0.45 0.25 0.08 0.22 0.7 0.3 0.4 0.3 0.15 0.35 0.5 0.05 0.2 0.75 0.01 0.04 0.95</probabilities>
+		</cpt>
+		<cpt id="DockingClearance">
+			<state id="Clear" />
+			<state id="Obstructed" />
+			<state id="Unknown" />
+			<parents>CameraQuality</parents>
+			<probabilities>0.75 0.15 0.1 0.7 0.18 0.12 0.5 0.2 0.3 0.3 0.2 0.5</probabilities>
+		</cpt>
+		<cpt id="PositionError">
+			<state id="Low" />
+			<state id="Medium" />
+			<state id="High" />
+			<parents>PoseEstimationQuality Current</parents>
+			<probabilities>0.85 0.12 0.03 0.7 0.22 0.08 0.5 0.35 0.15 0.6 0.3 0.1 0.4 0.4 0.2 0.2 0.45 0.35 0.3 0.4 0.3 0.15 0.4 0.45 0.05 0.25 0.7</probabilities>
+		</cpt>
+		<cpt id="VisualGuidanceQuality">
+			<state id="Excellent" />
+			<state id="Good" />
+			<state id="Poor" />
+			<state id="Failed" />
+			<parents>DockingStationDetection ArUcoMarkersVisible PoseEstimationQuality</parents>
+			<probabilities>0.85 0.12 0.02 0.01 0.7 0.22 0.06 0.02 0.5 0.35 0.12 0.03 0.65 0.25 0.08 0.02 0.5 0.35 0.12 0.03 0.3 0.4 0.24 0.06 0.4 0.4 0.16 0.04 0.25 0.4 0.28 0.07000000000000001 0.12 0.3 0.4 0.18 0.6 0.28 0.1 0.02 0.45 0.35 0.16 0.04 0.28 0.4 0.25 0.07000000000000001 0.4 0.4 0.16 0.04 0.28 0.4 0.25 0.07000000000000001 0.15 0.35 0.38 0.12 0.22 0.38 0.3 0.1 0.12 0.3 0.4 0.18 0.06 0.2 0.44 0.3 0.3 0.4 0.24 0.06 0.18 0.35 0.35 0.12 0.1 0.25 0.42 0.23 0.15 0.35 0.38 0.12 0.08 0.25 0.42 0.25 0.04 0.16 0.4 0.4 0.08 0.22 0.45 0.25 0.04 0.16 0.4 0.4 0.02 0.08 0.3 0.6</probabilities>
+		</cpt>
+		<cpt id="ApproachFeasibility">
+			<state id="Safe" />
+			<state id="Marginal" />
+			<state id="Unsafe" />
+			<parents>PositionError Current DockingClearance</parents>
+			<probabilities>0.85 0.12 0.03 0.4 0.4 0.2 0.6 0.3 0.1 0.7 0.22 0.08 0.3 0.4 0.3 0.5 0.35 0.15 0.5 0.35 0.15 0.2 0.35 0.45 0.35 0.4 0.25 0.65 0.25 0.1 0.25 0.4 0.35 0.45 0.35 0.2 0.5 0.35 0.15 0.18 0.35 0.47 0.35 0.4 0.25 0.3 0.4 0.3 0.1 0.25 0.65 0.2 0.35 0.45 0.4 0.4 0.2 0.12 0.3 0.58 0.25 0.4 0.35 0.25 0.4 0.35 0.08 0.22 0.7 0.15 0.35 0.5 0.15 0.3 0.55 0.04 0.16 0.8 0.1 0.25 0.65</probabilities>
+		</cpt>
+		<cpt id="DockingReliability">
+			<state id="VeryHigh" />
+			<state id="High" />
+			<state id="Medium" />
+			<state id="Low" />
+			<state id="VeryLow" />
+			<parents>VisualGuidanceQuality ApproachFeasibility</parents>
+			<probabilities>0.8 0.15 0.04 0.005 0.005 0.6 0.28 0.1 0.015 0.005 0.35 0.35 0.22 0.06 0.02 0.65 0.25 0.08 0.015 0.005 0.45 0.35 0.15 0.04 0.01 0.25 0.35 0.28 0.09 0.03 0.4 0.35 0.18 0.05 0.02 0.22 0.33 0.28 0.12 0.05 0.12 0.23 0.35 0.2 0.1 0.2 0.3 0.32 0.13 0.05 0.1 0.22 0.35 0.23 0.1 0.04 0.11 0.25 0.35 0.25</probabilities>
+		</cpt>
+		<cpt id="ReliabilityComparison">
+			<state id="AutoBetter" />
+			<state id="Similar" />
+			<state id="HumanBetter" />
+			<parents>HumanDecisionReliability AutonomousControlReliability</parents>
+			<probabilities>0.4 0.4 0.2 0.7 0.25 0.05 0.85 0.12 0.03 0.85 0.12 0.03 0.85 0.12 0.03 0.1 0.3 0.6 0.4 0.4 0.2 0.7 0.25 0.05 0.85 0.12 0.03 0.85 0.12 0.03 0.05 0.2 0.75 0.1 0.3 0.6 0.4 0.4 0.2 0.7 0.25 0.05 0.85 0.12 0.03 0.05 0.2 0.75 0.05 0.2 0.75 0.1 0.3 0.6 0.4 0.4 0.2 0.7 0.25 0.05 0.05 0.2 0.75 0.05 0.2 0.75 0.05 0.2 0.75 0.1 0.3 0.6 0.4 0.4 0.2</probabilities>
+		</cpt>
+		<cpt id="MissionModeRecommendation">
+			<state id="Autonomous" />
+			<state id="Human" />
+			<state id="Shared" />
+			<parents>ReliabilityComparison MissionPhase TaskCriticality DockingReliability</parents>
+			<probabilities>0.75 0.15 0.1 0.75 0.15 0.1 0.75 0.15 0.1 0.75 0.15 0.1 0.75 0.15 0.1 0.75 0.15 0.1 0.75 0.15 0.1 0.75 0.15 0.1 0.75 0.15 0.1 0.75 0.15 0.1 0.85 0.1 0.05 0.85 0.1 0.05 0.85 0.1 0.05 0.85 0.1 0.05 0.85 0.1 0.05 0.75 0.15 0.1 0.75 0.15 0.1 0.75 0.15 0.1 0.75 0.15 0.1 0.75 0.15 0.1 0.75 0.15 0.1 0.75 0.15 0.1 0.75 0.15 0.1 0.75 0.15 0.1 0.75 0.15 0.1 0.85 0.1 0.05 0.85 0.1 0.05 0.85 0.1 0.05 0.85 0.1 0.05 0.85 0.1 0.05 0.75 0.15 0.1 0.75 0.15 0.1 0.75 0.15 0.1 0.75 0.15 0.1 0.75 0.15 0.1 0.75 0.15 0.1 0.75 0.15 0.1 0.75 0.15 0.1 0.75 0.15 0.1 0.75 0.15 0.1 0.85 0.1 0.05 0.85 0.1 0.05 0.85 0.1 0.05 0.85 0.1 0.05 0.85 0.1 0.05 0.75 0.15 0.1 0.75 0.15 0.1 0.75 0.15 0.1 0.75 0.15 0.1 0.75 0.15 0.1 0.75 0.15 0.1 0.75 0.15 0.1 0.75 0.15 0.1 0.75 0.15 0.1 0.75 0.15 0.1 0.85 0.1 0.05 0.85 0.1 0.05 0.85 0.1 0.05 0.85 0.1 0.05 0.85 0.1 0.05 0.85 0.09999999999999999 0.05 0.85 0.09999999999999999 0.05 0.75 0.15 0.1 0.75 0.15 0.1 0.75 0.15 0.1 0.85 0.09999999999999999 0.05 0.85 0.09999999999999999 0.05 0.75 0.15 0.1 0.75 0.15 0.1 0.75 0.15 0.1 0.85 0.1 0.05 0.85 0.1 0.05 0.85 0.1 0.05 0.85 0.1 0.05 0.85 0.1 0.05 0.75 0.15 0.1 0.75 0.15 0.1 0.75 0.15 0.1 0.75 0.15 0.1 0.75 0.15 0.1 0.75 0.15 0.1 0.75 0.15 0.1 0.75 0.15 0.1 0.75 0.15 0.1 0.75 0.15 0.1 0.85 0.1 0.05 0.85 0.1 0.05 0.85 0.1 0.05 0.85 0.1 0.05 0.85 0.1 0.05 0.45 0.35 0.2 0.45 0.35 0.2 0.45 0.35 0.2 0.45 0.35 0.2 0.45 0.35 0.2 0.45 0.35 0.2 0.45 0.35 0.2 0.45 0.35 0.2 0.45 0.35 0.2 0.45 0.35 0.2 0.45 0.35 0.2 0.45 0.35 0.2 0.45 0.35 0.2 0.45 0.35 0.2 0.45 0.35 0.2 0.45 0.35 0.2 0.45 0.35 0.2 0.45 0.35 0.2 0.45 0.35 0.2 0.45 0.35 0.2 0.45 0.35 0.2 0.45 0.35 0.2 0.45 0.35 0.2 0.45 0.35 0.2 0.45 0.35 0.2 0.45 0.35 0.2 0.45 0.35 0.2 0.45 0.35 0.2 0.45 0.35 0.2 0.45 0.35 0.2 0.45 0.35 0.2 0.45 0.35 0.2 0.45 0.35 0.2 0.45 0.35 0.2 0.45 0.35 0.2 0.45 0.35 0.2 0.45 0.35 0.2 0.45 0.35 0.2 0.45 0.35 0.2 0.45 0.35 0.2 0.45 0.35 0.2 0.45 0.35 0.2 0.45 0.35 0.2 0.45 0.35 0.2 0.45 0.35 0.2 0.45 0.35 0.2 0.45 0.35 0.2 0.45 0.35 0.2 0.45 0.35 0.2 0.45 0.35 0.2 0.45 0.35 0.2 0.45 0.35 0.2 0.45 0.35 0.2 0.45 0.35 0.2 0.45 0.35 0.2 0.45 0.35 0.2 0.45 0.35 0.2 0.45 0.35 0.2 0.45 0.35 0.2 0.45 0.35 0.2 0.55 0.3 0.15 0.55 0.3 0.15 0.45 0.35 0.2 0.45 0.35 0.2 0.45 0.35 0.2 0.55 0.3 0.15 0.55 0.3 0.15 0.45 0.35 0.2 0.45 0.35 0.2 0.45 0.35 0.2 0.55 0.3 0.15 0.55 0.3 0.15 0.45 0.35 0.2 0.45 0.35 0.2 0.45 0.35 0.2 0.45 0.35 0.2 0.45 0.35 0.2 0.45 0.35 0.2 0.45 0.35 0.2 0.45 0.35 0.2 0.45 0.35 0.2 0.45 0.35 0.2 0.45 0.35 0.2 0.45 0.35 0.2 0.45 0.35 0.2 0.45 0.35 0.2 0.45 0.35 0.2 0.45 0.35 0.2 0.45 0.35 0.2 0.45 0.35 0.2 0.15 0.25 0.6 0.15 0.25 0.6 0.15 0.25 0.6 0.15 0.25 0.6 0.15 0.25 0.6 0.15 0.25 0.6 0.15 0.25 0.6 0.15 0.25 0.6 0.15 0.25 0.6 0.15 0.25 0.6 0.1 0.15 0.75 0.1 0.15 0.75 0.1 0.15 0.75 0.1 0.15 0.75 0.1 0.15 0.75 0.15 0.25 0.6 0.15 0.25 0.6 0.15 0.25 0.6 0.15 0.25 0.6 0.15 0.25 0.6 0.15 0.25 0.6 0.15 0.25 0.6 0.15 0.25 0.6 0.15 0.25 0.6 0.15 0.25 0.6 0.1 0.15 0.75 0.1 0.15 0.75 0.1 0.15 0.75 0.1 0.15 0.75 0.1 0.15 0.75 0.15 0.25 0.6 0.15 0.25 0.6 0.15 0.25 0.6 0.15 0.25 0.6 0.15 0.25 0.6 0.15 0.25 0.6 0.15 0.25 0.6 0.15 0.25 0.6 0.15 0.25 0.6 0.15 0.25 0.6 0.1 0.15 0.75 0.1 0.15 0.75 0.1 0.15 0.75 0.1 0.15 0.75 0.1 0.15 0.75 0.15 0.25 0.6 0.15 0.25 0.6 0.15 0.25 0.6 0.15 0.25 0.6 0.15 0.25 0.6 0.15 0.25 0.6 0.15 0.25 0.6 0.15 0.25 0.6 0.15 0.25 0.6 0.15 0.25 0.6 0.1 0.15 0.75 0.1 0.15 0.75 0.1 0.15 0.75 0.1 0.15 0.75 0.1 0.15 0.75 0.25 0.2 0.5499999999999999 0.25 0.2 0.5499999999999999 0.15 0.25 0.6 0.15 0.25 0.6 0.15 0.25 0.6 0.25 0.2 0.5499999999999999 0.25 0.2 0.5499999999999999 0.15 0.25 0.6 0.15 0.25 0.6 0.15 0.25 0.6 0.1 0.15 0.75 0.1 0.15 0.75 0.1 0.15 0.75 0.1 0.15 0.75 0.1 0.15 0.75 0.15 0.25 0.6 0.15 0.25 0.6 0.15 0.25 0.6 0.15 0.25 0.6 0.15 0.25 0.6 0.15 0.25 0.6 0.15 0.25 0.6 0.15 0.25 0.6 0.15 0.25 0.6 0.15 0.25 0.6 0.1 0.15 0.75 0.1 0.15 0.75 0.1 0.15 0.75 0.1 0.15 0.75 0.1 0.15 0.75</probabilities>
+		</cpt>
+	</nodes>
+	<extensions>
+		<genie version="1.0" app="SMILE_ACADEMIC 2.4.0@070aab1774fd" name="IntegratedMissionControl">
+			<node id="Current">
+				<name>Current</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="MS Sans Serif" size="8" />
+				<position>109 119 209 159</position>
+				<barchart active="true" width="128" height="64">
+				</barchart>
+			</node>
+			<node id="Wind">
+				<name>Wind</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="MS Sans Serif" size="8" />
+				<position>303 104 403 144</position>
+				<barchart active="true" width="128" height="64">
+				</barchart>
+			</node>
+			<node id="Waves">
+				<name>Waves</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="MS Sans Serif" size="8" />
+				<position>465 128 565 168</position>
+				<barchart active="true" width="128" height="64">
+				</barchart>
+			</node>
+			<node id="MissionPhase">
+				<name>Mission Phase</name>
+				<interior color="fff0e0" />
+				<outline color="800000" />
+				<font color="000000" name="MS Sans Serif" size="8" />
+				<position>623 90 723 130</position>
+				<barchart active="true" width="128" height="112">
+				</barchart>
+			</node>
+			<node id="TaskComplexity">
+				<name>Task Complexity</name>
+				<interior color="fff0e0" />
+				<outline color="800000" />
+				<font color="000000" name="MS Sans Serif" size="8" />
+				<position>557 251 657 291</position>
+				<barchart active="true" width="128" height="64">
+				</barchart>
+			</node>
+			<node id="TaskCriticality">
+				<name>Task Criticality</name>
+				<interior color="fff0e0" />
+				<outline color="800000" />
+				<font color="000000" name="MS Sans Serif" size="8" />
+				<position>730 227 830 267</position>
+				<barchart active="true" width="128" height="64">
+				</barchart>
+			</node>
+			<node id="BatteryLevel">
+				<name>Battery Level</name>
+				<interior color="f0f0ff" />
+				<outline color="000080" />
+				<font color="000000" name="MS Sans Serif" size="8" />
+				<position>911 189 1011 229</position>
+				<barchart active="true" width="128" height="80">
+				</barchart>
+			</node>
+			<node id="USBLStrength">
+				<name>USBL Strength</name>
+				<interior color="f0f0ff" />
+				<outline color="000080" />
+				<font color="000000" name="MS Sans Serif" size="8" />
+				<position>1067 102 1167 142</position>
+				<barchart active="true" width="128" height="80">
+				</barchart>
+			</node>
+			<node id="PoseEstimationQuality">
+				<name>Pose Estimation Quality</name>
+				<interior color="f0f0ff" />
+				<outline color="000080" />
+				<font color="000000" name="MS Sans Serif" size="8" />
+				<position>1070 250 1170 290</position>
+				<barchart active="true" width="159" height="64">
+				</barchart>
+			</node>
+			<node id="Speed">
+				<name>Speed</name>
+				<interior color="f0f0ff" />
+				<outline color="000080" />
+				<font color="000000" name="MS Sans Serif" size="8" />
+				<position>81 318 181 358</position>
+				<barchart active="true" width="128" height="64">
+				</barchart>
+			</node>
+			<node id="Altitude">
+				<name>Altitude</name>
+				<interior color="f0f0ff" />
+				<outline color="000080" />
+				<font color="000000" name="MS Sans Serif" size="8" />
+				<position>793 86 893 126</position>
+				<barchart active="true" width="128" height="64">
+				</barchart>
+			</node>
+			<node id="CameraQuality">
+				<name>Camera Quality</name>
+				<interior color="f0f0ff" />
+				<outline color="000080" />
+				<font color="000000" name="MS Sans Serif" size="8" />
+				<position>1229 107 1329 147</position>
+				<barchart active="true" width="128" height="80">
+				</barchart>
+			</node>
+			<node id="Fatigue">
+				<name>Fatigue</name>
+				<interior color="ffe0e0" />
+				<outline color="800000" />
+				<font color="000000" name="MS Sans Serif" size="8" />
+				<position>96 529 196 569</position>
+				<barchart active="true" width="128" height="64">
+				</barchart>
+			</node>
+			<node id="Stress">
+				<name>Stress</name>
+				<interior color="ffe0e0" />
+				<outline color="800000" />
+				<font color="000000" name="MS Sans Serif" size="8" />
+				<position>58 650 158 690</position>
+				<barchart active="true" width="128" height="64">
+				</barchart>
+			</node>
+			<node id="Attention">
+				<name>Attention</name>
+				<interior color="ffe0e0" />
+				<outline color="800000" />
+				<font color="000000" name="MS Sans Serif" size="8" />
+				<position>467 676 567 716</position>
+				<barchart active="true" width="128" height="64">
+				</barchart>
+			</node>
+			<node id="OperatorWorkload">
+				<name>Operator Workload</name>
+				<interior color="ffcccc" />
+				<outline color="800000" />
+				<font color="000000" name="MS Sans Serif" size="8" />
+				<position>259 550 359 590</position>
+				<barchart active="true" width="128" height="64">
+				</barchart>
+			</node>
+			<node id="CognitiveLoad">
+				<name>Cognitive Load</name>
+				<interior color="ffcccc" />
+				<outline color="800000" />
+				<font color="000000" name="MS Sans Serif" size="8" />
+				<position>463 554 563 594</position>
+				<barchart active="true" width="128" height="80">
+				</barchart>
+			</node>
+			<node id="SituationalAwareness">
+				<name>Situational Awareness</name>
+				<interior color="ffcccc" />
+				<outline color="800000" />
+				<font color="000000" name="MS Sans Serif" size="8" />
+				<position>278 671 378 711</position>
+				<barchart active="true" width="159" height="80">
+				</barchart>
+			</node>
+			<node id="HumanDecisionReliability">
+				<name>Human Decision Reliability</name>
+				<interior color="ff9999" />
+				<outline color="800000" />
+				<font color="000000" name="MS Sans Serif" size="8" />
+				<position>270 850 370 890</position>
+				<barchart active="true" width="159" height="96">
+				</barchart>
+			</node>
+			<node id="NavigationReliability">
+				<name>Navigation Reliability</name>
+				<interior color="ccffcc" />
+				<outline color="008000" />
+				<font color="000000" name="MS Sans Serif" size="8" />
+				<position>890 408 990 448</position>
+				<barchart active="true" width="128" height="90">
+				</barchart>
+			</node>
+			<node id="PerceptionReliability">
+				<name>Perception Reliability</name>
+				<interior color="ccffcc" />
+				<outline color="008000" />
+				<font color="000000" name="MS Sans Serif" size="8" />
+				<position>1070 400 1170 440</position>
+				<barchart active="true" width="128" height="90">
+				</barchart>
+			</node>
+			<node id="ControlStability">
+				<name>Control Stability</name>
+				<interior color="ccffcc" />
+				<outline color="008000" />
+				<font color="000000" name="MS Sans Serif" size="8" />
+				<position>920 550 1020 590</position>
+				<barchart active="true" width="128" height="90">
+				</barchart>
+			</node>
+			<node id="AutonomousControlReliability">
+				<name>Autonomous Control Reliability</name>
+				<interior color="99ff99" />
+				<outline color="008000" />
+				<font color="000000" name="MS Sans Serif" size="8" />
+				<position>920 700 1020 740</position>
+				<barchart active="true" width="179" height="96">
+				</barchart>
+			</node>
+			<node id="ArUcoMarkersVisible">
+				<name>ArUco Markers Visible</name>
+				<interior color="ffffcc" />
+				<outline color="808000" />
+				<font color="000000" name="MS Sans Serif" size="8" />
+				<position>1412 126 1512 166</position>
+				<barchart active="true" width="128" height="64">
+				</barchart>
+			</node>
+			<node id="DockingStationDetection">
+				<name>Docking Station Detection</name>
+				<interior color="ffffcc" />
+				<outline color="808000" />
+				<font color="000000" name="MS Sans Serif" size="8" />
+				<position>1269 281 1369 321</position>
+				<barchart active="true" width="159" height="64">
+				</barchart>
+			</node>
+			<node id="DockingClearance">
+				<name>Docking Clearance</name>
+				<interior color="ffffcc" />
+				<outline color="808000" />
+				<font color="000000" name="MS Sans Serif" size="8" />
+				<position>1481 301 1581 341</position>
+				<barchart active="true" width="128" height="64">
+				</barchart>
+			</node>
+			<node id="PositionError">
+				<name>Position Error</name>
+				<interior color="ffffcc" />
+				<outline color="808000" />
+				<font color="000000" name="MS Sans Serif" size="8" />
+				<position>1213 384 1313 424</position>
+				<barchart active="true" width="128" height="64">
+				</barchart>
+			</node>
+			<node id="VisualGuidanceQuality">
+				<name>Visual Guidance Quality</name>
+				<interior color="ffffcc" />
+				<outline color="808000" />
+				<font color="000000" name="MS Sans Serif" size="8" />
+				<position>1370 550 1470 590</position>
+				<barchart active="true" width="159" height="90">
+				</barchart>
+			</node>
+			<node id="ApproachFeasibility">
+				<name>Approach Feasibility</name>
+				<interior color="ffffcc" />
+				<outline color="808000" />
+				<font color="000000" name="MS Sans Serif" size="8" />
+				<position>1220 550 1320 590</position>
+				<barchart active="true" width="128" height="64">
+				</barchart>
+			</node>
+			<node id="DockingReliability">
+				<name>Docking Reliability</name>
+				<interior color="ffff99" />
+				<outline color="808000" />
+				<font color="000000" name="MS Sans Serif" size="8" />
+				<position>1295 700 1395 740</position>
+				<barchart active="true" width="159" height="96">
+				</barchart>
+			</node>
+			<node id="ReliabilityComparison">
+				<name>Reliability Comparison</name>
+				<interior color="e0e0ff" />
+				<outline color="000080" />
+				<font color="000000" name="MS Sans Serif" size="8" />
+				<position>690 844 790 884</position>
+				<barchart active="true" width="128" height="64">
+				</barchart>
+			</node>
+			<node id="MissionModeRecommendation">
+				<name>Mission Mode Recommendation</name>
+				<interior color="ffd700" />
+				<outline color="ff0000" />
+				<font color="000000" name="MS Sans Serif" size="8" />
+				<position>595 1000 695 1040</position>
+				<barchart active="true" width="179" height="76">
+				</barchart>
+			</node>
+		</genie>
+	</extensions>
+</smile>

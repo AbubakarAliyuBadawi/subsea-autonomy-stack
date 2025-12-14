@@ -1,0 +1,45 @@
+[0.421s] Invoking command in '/home/badawi/Desktop/PhD_Autumn_2025/subsea-autonomy-stack/build/rov_risk_assessment': PYTHONPATH=/home/badawi/Desktop/PhD_Autumn_2025/subsea-autonomy-stack/build/rov_risk_assessment/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/badawi/Desktop/PhD_Autumn_2025/subsea-autonomy-stack/install/rov_risk_assessment/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py develop --editable --build-directory /home/badawi/Desktop/PhD_Autumn_2025/subsea-autonomy-stack/build/rov_risk_assessment/build --no-deps symlink_data --force
+[0.509s] /home/badawi/.local/lib/python3.10/site-packages/setuptools/_distutils/dist.py:270: UserWarning: Unknown distribution option: 'tests_require'
+[0.509s]   warnings.warn(msg)
+[0.615s] running develop
+[0.616s] /home/badawi/.local/lib/python3.10/site-packages/setuptools/command/develop.py:41: EasyInstallDeprecationWarning: easy_install command is deprecated.
+[0.616s] !!
+[0.616s] 
+[0.616s]         ********************************************************************************
+[0.616s]         Please avoid running ``setup.py`` and ``easy_install``.
+[0.616s]         Instead, use pypa/build, pypa/installer or other
+[0.616s]         standards-based tools.
+[0.616s] 
+[0.616s]         See https://github.com/pypa/setuptools/issues/917 for details.
+[0.616s]         ********************************************************************************
+[0.616s] 
+[0.616s] !!
+[0.616s]   easy_install.initialize_options(self)
+[0.751s] running egg_info
+[0.761s] writing rov_risk_assessment.egg-info/PKG-INFO
+[0.761s] writing dependency_links to rov_risk_assessment.egg-info/dependency_links.txt
+[0.761s] writing entry points to rov_risk_assessment.egg-info/entry_points.txt
+[0.761s] writing requirements to rov_risk_assessment.egg-info/requires.txt
+[0.762s] writing top-level names to rov_risk_assessment.egg-info/top_level.txt
+[0.780s] reading manifest file 'rov_risk_assessment.egg-info/SOURCES.txt'
+[0.781s] writing manifest file 'rov_risk_assessment.egg-info/SOURCES.txt'
+[0.791s] running build_ext
+[0.791s] Creating /home/badawi/Desktop/PhD_Autumn_2025/subsea-autonomy-stack/install/rov_risk_assessment/lib/python3.10/site-packages/rov-risk-assessment.egg-link (link to .)
+[0.791s] Installing altitude script to /home/badawi/Desktop/PhD_Autumn_2025/subsea-autonomy-stack/install/rov_risk_assessment/lib/rov_risk_assessment
+[0.791s] Installing battery_level script to /home/badawi/Desktop/PhD_Autumn_2025/subsea-autonomy-stack/install/rov_risk_assessment/lib/rov_risk_assessment
+[0.791s] Installing camera_quality script to /home/badawi/Desktop/PhD_Autumn_2025/subsea-autonomy-stack/install/rov_risk_assessment/lib/rov_risk_assessment
+[0.791s] Installing mission_control_bn script to /home/badawi/Desktop/PhD_Autumn_2025/subsea-autonomy-stack/install/rov_risk_assessment/lib/rov_risk_assessment
+[0.792s] Installing speed script to /home/badawi/Desktop/PhD_Autumn_2025/subsea-autonomy-stack/install/rov_risk_assessment/lib/rov_risk_assessment
+[0.792s] Installing test_publishers script to /home/badawi/Desktop/PhD_Autumn_2025/subsea-autonomy-stack/install/rov_risk_assessment/lib/rov_risk_assessment
+[0.792s] Installing test_usbl script to /home/badawi/Desktop/PhD_Autumn_2025/subsea-autonomy-stack/install/rov_risk_assessment/lib/rov_risk_assessment
+[0.792s] Installing trust script to /home/badawi/Desktop/PhD_Autumn_2025/subsea-autonomy-stack/install/rov_risk_assessment/lib/rov_risk_assessment
+[0.792s] Installing turbidity script to /home/badawi/Desktop/PhD_Autumn_2025/subsea-autonomy-stack/install/rov_risk_assessment/lib/rov_risk_assessment
+[0.792s] Installing weather_api script to /home/badawi/Desktop/PhD_Autumn_2025/subsea-autonomy-stack/install/rov_risk_assessment/lib/rov_risk_assessment
+[0.792s] 
+[0.792s] Installed /home/badawi/Desktop/PhD_Autumn_2025/subsea-autonomy-stack/build/rov_risk_assessment
+[0.792s] running symlink_data
+[0.792s] symbolically linking /home/badawi/Desktop/PhD_Autumn_2025/subsea-autonomy-stack/build/rov_risk_assessment/resource/rov_risk_assessment -> /home/badawi/Desktop/PhD_Autumn_2025/subsea-autonomy-stack/install/rov_risk_assessment/share/ament_index/resource_index/packages
+[0.792s] symbolically linking /home/badawi/Desktop/PhD_Autumn_2025/subsea-autonomy-stack/build/rov_risk_assessment/package.xml -> /home/badawi/Desktop/PhD_Autumn_2025/subsea-autonomy-stack/install/rov_risk_assessment/share/rov_risk_assessment
+[0.793s] symbolically linking /home/badawi/Desktop/PhD_Autumn_2025/subsea-autonomy-stack/build/rov_risk_assessment/launch/risk_assessment.launch.py -> /home/badawi/Desktop/PhD_Autumn_2025/subsea-autonomy-stack/install/rov_risk_assessment/share/rov_risk_assessment/launch
+[0.793s] symbolically linking /home/badawi/Desktop/PhD_Autumn_2025/subsea-autonomy-stack/build/rov_risk_assessment/config/integrated_mission_control.xdsl -> /home/badawi/Desktop/PhD_Autumn_2025/subsea-autonomy-stack/install/rov_risk_assessment/share/rov_risk_assessment/config
+[0.811s] Invoked command in '/home/badawi/Desktop/PhD_Autumn_2025/subsea-autonomy-stack/build/rov_risk_assessment' returned '0': PYTHONPATH=/home/badawi/Desktop/PhD_Autumn_2025/subsea-autonomy-stack/build/rov_risk_assessment/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/badawi/Desktop/PhD_Autumn_2025/subsea-autonomy-stack/install/rov_risk_assessment/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py develop --editable --build-directory /home/badawi/Desktop/PhD_Autumn_2025/subsea-autonomy-stack/build/rov_risk_assessment/build --no-deps symlink_data --force

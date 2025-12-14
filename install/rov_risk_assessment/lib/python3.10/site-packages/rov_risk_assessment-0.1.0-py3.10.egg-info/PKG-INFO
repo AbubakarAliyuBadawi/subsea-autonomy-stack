@@ -1,0 +1,13 @@
+Metadata-Version: 2.2
+Name: rov_risk_assessment
+Version: 0.1.0
+Summary: Bayesian Network-based risk assessment for ROV missions
+Maintainer: Badawi
+Maintainer-email: abubakar.a.badawi@ntnu.no
+License: MIT
+Requires-Dist: setuptools
+Dynamic: license
+Dynamic: maintainer
+Dynamic: maintainer-email
+Dynamic: requires-dist
+Dynamic: summary
