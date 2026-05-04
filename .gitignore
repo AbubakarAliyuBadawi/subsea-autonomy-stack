@@ -1,0 +1,11 @@
+build/
+install/
+log/
+__pycache__/
+*.py[cod]
+
+# Large local model/data artifacts.
+models/fish_detection/weights/
+*.weights
+*.mp4
+*.avi

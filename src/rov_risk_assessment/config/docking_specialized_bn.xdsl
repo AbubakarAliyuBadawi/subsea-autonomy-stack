@@ -1,0 +1,518 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This network was created in GeNIe Academic, which can be used for academic teaching and research purposes only -->
+<smile version="1.0" id="DockingSpecializedBN" numsamples="10000" discsamples="10000">
+	<nodes>
+		<cpt id="Current">
+			<state id="Low" />
+			<state id="Medium" />
+			<state id="High" />
+			<probabilities>0.5 0.35 0.15</probabilities>
+		</cpt>
+		<cpt id="BatteryLevel">
+			<state id="High" />
+			<state id="Medium" />
+			<state id="Low" />
+			<state id="Critical" />
+			<probabilities>0.4 0.35 0.2 0.05</probabilities>
+		</cpt>
+		<cpt id="USBLStrength">
+			<state id="Strong" />
+			<state id="Moderate" />
+			<state id="Weak" />
+			<state id="Lost" />
+			<probabilities>0.5 0.3 0.15 0.05</probabilities>
+		</cpt>
+		<cpt id="PoseEstimationQuality">
+			<state id="High" />
+			<state id="Medium" />
+			<state id="Low" />
+			<parents>USBLStrength</parents>
+			<probabilities>0.8 0.15 0.05 0.5 0.35 0.15 0.2 0.4 0.4 0.05 0.25 0.7</probabilities>
+		</cpt>
+		<cpt id="Speed">
+			<state id="Safe" />
+			<state id="Moderate" />
+			<state id="High" />
+			<parents>Current</parents>
+			<probabilities>0.7 0.25 0.05 0.5 0.35 0.15 0.3 0.4 0.3</probabilities>
+		</cpt>
+		<cpt id="Altitude">
+			<state id="Safe" />
+			<state id="Marginal" />
+			<state id="Unsafe" />
+			<probabilities>0.65 0.25 0.1</probabilities>
+		</cpt>
+		<cpt id="CameraQuality">
+			<state id="Excellent" />
+			<state id="Good" />
+			<state id="Poor" />
+			<state id="Failed" />
+			<probabilities>0.5 0.3 0.15 0.05</probabilities>
+		</cpt>
+		<cpt id="Fatigue">
+			<state id="Low" />
+			<state id="Medium" />
+			<state id="High" />
+			<probabilities>0.5 0.35 0.15</probabilities>
+		</cpt>
+		<cpt id="Stress">
+			<state id="Low" />
+			<state id="Medium" />
+			<state id="High" />
+			<probabilities>0.5 0.35 0.15</probabilities>
+		</cpt>
+		<cpt id="Attention">
+			<state id="Low" />
+			<state id="Medium" />
+			<state id="High" />
+			<parents>Fatigue Stress</parents>
+			<probabilities>0.7 0.25 0.05 0.5 0.35 0.15 0.3 0.45 0.25 0.5 0.35 0.15 0.3 0.4 0.3 0.15 0.4 0.45 0.3 0.45 0.25 0.15 0.4 0.45 0.1 0.3 0.6</probabilities>
+		</cpt>
+		<cpt id="CognitiveLoad">
+			<state id="Low" />
+			<state id="Medium" />
+			<state id="High" />
+			<state id="Overload" />
+			<parents>Attention</parents>
+			<probabilities>0.05 0.2 0.45 0.3 0.3 0.4 0.25 0.05 0.7 0.25 0.04 0.01</probabilities>
+		</cpt>
+		<cpt id="SituationalAwareness">
+			<state id="High" />
+			<state id="Medium" />
+			<state id="Low" />
+			<state id="VeryLow" />
+			<parents>Attention CognitiveLoad</parents>
+			<probabilities>0.2 0.4 0.3 0.1 0.1 0.3 0.4 0.2 0.05 0.2 0.45 0.3 0.02 0.1 0.38 0.5 0.5 0.35 0.12 0.03 0.3 0.4 0.25 0.05 0.15 0.35 0.35 0.15 0.05 0.2 0.45 0.3 0.75 0.2 0.04 0.01 0.55 0.3 0.12 0.03 0.35 0.4 0.2 0.05 0.15 0.35 0.35 0.15</probabilities>
+		</cpt>
+		<cpt id="HumanDecisionReliability">
+			<state id="VeryHigh" />
+			<state id="High" />
+			<state id="Medium" />
+			<state id="Low" />
+			<state id="VeryLow" />
+			<parents>SituationalAwareness</parents>
+			<probabilities>0.7 0.22 0.06 0.01 0.01 0.55 0.3 0.12 0.02 0.01 0.35 0.35 0.22 0.06 0.02 0.2 0.3 0.3 0.15 0.05</probabilities>
+		</cpt>
+		<cpt id="NavigationReliability">
+			<state id="High" />
+			<state id="Medium" />
+			<state id="Low" />
+			<state id="VeryLow" />
+			<parents>PoseEstimationQuality Current</parents>
+			<probabilities>0.8 0.15 0.04 0.01 0.65 0.25 0.08 0.02 0.45 0.35 0.15 0.05 0.55 0.3 0.12 0.03 0.4 0.35 0.2 0.05 0.25 0.35 0.3 0.1 0.3 0.35 0.25 0.1 0.18 0.32 0.35 0.15 0.1 0.2 0.4 0.3</probabilities>
+		</cpt>
+		<cpt id="PerceptionReliability">
+			<state id="High" />
+			<state id="Medium" />
+			<state id="Low" />
+			<state id="VeryLow" />
+			<parents>CameraQuality Current</parents>
+			<probabilities>0.85 0.12 0.02 0.01 0.7 0.22 0.06 0.02 0.5 0.35 0.12 0.03 0.65 0.25 0.08 0.02 0.5 0.35 0.12 0.03 0.35 0.4 0.2 0.05 0.35 0.4 0.2 0.05 0.2 0.35 0.35 0.1 0.1 0.25 0.45 0.2 0.05 0.15 0.4 0.4 0.02 0.08 0.3 0.6 0.01 0.04 0.2 0.75</probabilities>
+		</cpt>
+		<cpt id="ControlStability">
+			<state id="High" />
+			<state id="Medium" />
+			<state id="Low" />
+			<state id="VeryLow" />
+			<parents>Speed Altitude BatteryLevel</parents>
+			<probabilities>0.85 0.12 0.02 0.01 0.75 0.2 0.04 0.01 0.6 0.3 0.08 0.02 0.4 0.35 0.2 0.05 0.7 0.22 0.06 0.02 0.6 0.28 0.1 0.02 0.45 0.35 0.15 0.05 0.3 0.35 0.25 0.1 0.5 0.35 0.12 0.03 0.4 0.35 0.2 0.05 0.25 0.35 0.3 0.1 0.15 0.25 0.4 0.2 0.7 0.22 0.06 0.02 0.6 0.28 0.1 0.02 0.45 0.35 0.15 0.05 0.3 0.35 0.25 0.1 0.55 0.3 0.12 0.03 0.45 0.35 0.15 0.05 0.3 0.35 0.25 0.1 0.18 0.3 0.35 0.17 0.4 0.35 0.2 0.05 0.3 0.35 0.25 0.1 0.18 0.3 0.35 0.17 0.1 0.2 0.4 0.3 0.5 0.35 0.12 0.03 0.4 0.35 0.2 0.05 0.25 0.35 0.3 0.1 0.15 0.25 0.4 0.2 0.35 0.4 0.2 0.05 0.25 0.35 0.3 0.1 0.15 0.28 0.38 0.19 0.08 0.17 0.4 0.35 0.2 0.3 0.35 0.15 0.12 0.23 0.4 0.25 0.07000000000000001 0.15 0.38 0.4 0.03 0.1 0.3 0.57</probabilities>
+		</cpt>
+		<cpt id="AutonomousControlReliability">
+			<state id="VeryHigh" />
+			<state id="High" />
+			<state id="Medium" />
+			<state id="Low" />
+			<state id="VeryLow" />
+			<parents>NavigationReliability PerceptionReliability ControlStability</parents>
+			<probabilities>0.75 0.18 0.05 0.01 0.01 0.6 0.27 0.1 0.02 0.01 0.4 0.35 0.18 0.05 0.02 0.25 0.35 0.25 0.1 0.05 0.6 0.27 0.1 0.02 0.01 0.45 0.33 0.16 0.04 0.02 0.3 0.35 0.24 0.08 0.03 0.18 0.3 0.3 0.15 0.07000000000000001 0.4 0.35 0.18 0.05 0.02 0.28 0.35 0.25 0.09 0.03 0.18 0.3 0.3 0.15 0.07000000000000001 0.1 0.22 0.33 0.23 0.12 0.25 0.35 0.25 0.1 0.05 0.16 0.29 0.3 0.17 0.08 0.1 0.22 0.33 0.23 0.12 0.05 0.15 0.3 0.32 0.18 0.6 0.27 0.1 0.02 0.01 0.45 0.33 0.16 0.04 0.02 0.3 0.35 0.24 0.08 0.03 0.18 0.3 0.3 0.15 0.07000000000000001 0.45 0.33 0.16 0.04 0.02 0.32 0.35 0.22 0.08 0.03 0.2 0.32 0.3 0.13 0.05 0.12 0.25 0.33 0.2 0.1 0.3 0.35 0.24 0.08 0.03 0.2 0.32 0.3 0.13 0.05 0.12 0.25 0.33 0.2 0.1 0.07000000000000001 0.18 0.32 0.28 0.15 0.18 0.3 0.3 0.15 0.07000000000000001 0.12 0.25 0.33 0.2 0.1 0.07000000000000001 0.18 0.32 0.28 0.15 0.04 0.12 0.26 0.33 0.25 0.4 0.35 0.18 0.05 0.02 0.28 0.35 0.25 0.09 0.03 0.18 0.3 0.3 0.15 0.07000000000000001 0.1 0.22 0.33 0.23 0.12 0.28 0.35 0.25 0.09 0.03 0.18 0.3 0.3 0.15 0.07000000000000001 0.12 0.25 0.33 0.2 0.1 0.07000000000000001 0.18 0.32 0.28 0.15 0.18 0.3 0.3 0.15 0.07000000000000001 0.12 0.25 0.33 0.2 0.1 0.07000000000000001 0.18 0.32 0.28 0.15 0.04 0.12 0.26 0.33 0.25 0.1 0.22 0.33 0.23 0.12 0.07000000000000001 0.18 0.32 0.28 0.15 0.04 0.12 0.26 0.33 0.25 0.02 0.08 0.2 0.35 0.35 0.25 0.35 0.25 0.1 0.05 0.16 0.29 0.3 0.17 0.08 0.1 0.22 0.33 0.23 0.12 0.05 0.15 0.3 0.32 0.18 0.16 0.29 0.3 0.17 0.08 0.1 0.22 0.33 0.23 0.12 0.06 0.16 0.31 0.3 0.17 0.03 0.1 0.25 0.35 0.27 0.1 0.22 0.33 0.23 0.12 0.06 0.16 0.31 0.3 0.17 0.03 0.1 0.25 0.35 0.27 0.02 0.06 0.18 0.34 0.4 0.05 0.15 0.3 0.32 0.18 0.03 0.1 0.25 0.35 0.27 0.02 0.06 0.18 0.34 0.4 0.01 0.04 0.12 0.28 0.55</probabilities>
+		</cpt>
+		<cpt id="ArUcoMarkersVisible">
+			<state id="All" />
+			<state id="Some" />
+			<state id="None" />
+			<parents>CameraQuality</parents>
+			<probabilities>0.85 0.12 0.03 0.6 0.3 0.1 0.2 0.4 0.4 0.01 0.09 0.9</probabilities>
+		</cpt>
+		<cpt id="DockingStationDetection">
+			<state id="Detected" />
+			<state id="Partial" />
+			<state id="NotDetected" />
+			<parents>ArUcoMarkersVisible CameraQuality</parents>
+			<probabilities>0.95 0.04 0.01 0.85 0.12 0.03 0.6 0.3 0.1 0.15 0.35 0.5 0.7 0.25 0.05 0.55 0.35 0.1 0.3 0.45 0.25 0.08 0.22 0.7 0.3 0.4 0.3 0.15 0.35 0.5 0.05 0.2 0.75 0.01 0.04 0.95</probabilities>
+		</cpt>
+		<cpt id="DockingClearance">
+			<state id="Clear" />
+			<state id="Obstructed" />
+			<state id="Unknown" />
+			<parents>CameraQuality</parents>
+			<probabilities>0.75 0.15 0.1 0.7 0.18 0.12 0.5 0.2 0.3 0.3 0.2 0.5</probabilities>
+		</cpt>
+		<cpt id="PositionError">
+			<state id="Low" />
+			<state id="Medium" />
+			<state id="High" />
+			<parents>PoseEstimationQuality Current</parents>
+			<probabilities>0.85 0.12 0.03 0.7 0.22 0.08 0.5 0.35 0.15 0.6 0.3 0.1 0.4 0.4 0.2 0.2 0.45 0.35 0.3 0.4 0.3 0.15 0.4 0.45 0.05 0.25 0.7</probabilities>
+		</cpt>
+		<cpt id="VisualGuidanceQuality">
+			<state id="Excellent" />
+			<state id="Good" />
+			<state id="Poor" />
+			<state id="Failed" />
+			<parents>DockingStationDetection ArUcoMarkersVisible PoseEstimationQuality</parents>
+			<probabilities>0.85 0.12 0.02 0.01 0.7 0.22 0.06 0.02 0.5 0.35 0.12 0.03 0.65 0.25 0.08 0.02 0.5 0.35 0.12 0.03 0.3 0.4 0.24 0.06 0.4 0.4 0.16 0.04 0.25 0.4 0.28 0.07000000000000001 0.12 0.3 0.4 0.18 0.6 0.28 0.1 0.02 0.45 0.35 0.16 0.04 0.28 0.4 0.25 0.07000000000000001 0.4 0.4 0.16 0.04 0.28 0.4 0.25 0.07000000000000001 0.15 0.35 0.38 0.12 0.22 0.38 0.3 0.1 0.12 0.3 0.4 0.18 0.06 0.2 0.44 0.3 0.3 0.4 0.24 0.06 0.18 0.35 0.35 0.12 0.1 0.25 0.42 0.23 0.15 0.35 0.38 0.12 0.08 0.25 0.42 0.25 0.04 0.16 0.4 0.4 0.08 0.22 0.45 0.25 0.04 0.16 0.4 0.4 0.02 0.08 0.3 0.6</probabilities>
+		</cpt>
+		<cpt id="ApproachFeasibility">
+			<state id="Safe" />
+			<state id="Marginal" />
+			<state id="Unsafe" />
+			<parents>PositionError Current DockingClearance</parents>
+			<probabilities>0.85 0.12 0.03 0.4 0.4 0.2 0.6 0.3 0.1 0.7 0.22 0.08 0.3 0.4 0.3 0.5 0.35 0.15 0.5 0.35 0.15 0.2 0.35 0.45 0.35 0.4 0.25 0.65 0.25 0.1 0.25 0.4 0.35 0.45 0.35 0.2 0.5 0.35 0.15 0.18 0.35 0.47 0.35 0.4 0.25 0.3 0.4 0.3 0.1 0.25 0.65 0.2 0.35 0.45 0.4 0.4 0.2 0.12 0.3 0.58 0.25 0.4 0.35 0.25 0.4 0.35 0.08 0.22 0.7 0.15 0.35 0.5 0.15 0.3 0.55 0.04 0.16 0.8 0.1 0.25 0.65</probabilities>
+		</cpt>
+		<cpt id="DockingReliability">
+			<state id="VeryHigh" />
+			<state id="High" />
+			<state id="Medium" />
+			<state id="Low" />
+			<state id="VeryLow" />
+			<parents>VisualGuidanceQuality ApproachFeasibility</parents>
+			<probabilities>0.8 0.15 0.04 0.005 0.005 0.6 0.28 0.1 0.015 0.005 0.35 0.35 0.22 0.06 0.02 0.65 0.25 0.08 0.015 0.005 0.45 0.35 0.15 0.04 0.01 0.25 0.35 0.28 0.09 0.03 0.4 0.35 0.18 0.05 0.02 0.22 0.33 0.28 0.12 0.05 0.12 0.23 0.35 0.2 0.1 0.2 0.3 0.32 0.13 0.05 0.1 0.22 0.35 0.23 0.1 0.04 0.11 0.25 0.35 0.25</probabilities>
+		</cpt>
+		<cpt id="DockingModeRecommendation">
+			<state id="Autonomous" />
+			<state id="Human" />
+			<state id="Shared" />
+			<parents>HumanDecisionReliability AutonomousControlReliability DockingReliability</parents>
+			<probabilities>0.85 0.09 0.06 0.85 0.09 0.06 0.85 0.09 0.06 0.78 0.14 0.08 0.2 0.49 0.31 0.85 0.09 0.06 0.85 0.09 0.06 0.76 0.15 0.09 0.66 0.21 0.13 0.17 0.52 0.31 0.84 0.1 0.06 0.74 0.16 0.1 0.64 0.22 0.14 0.54 0.29 0.17 0.13 0.54 0.33 0.72 0.17 0.11 0.62 0.24 0.14 0.52 0.3 0.18 0.42 0.36 0.22 0.1 0.5600000000000001 0.34 0.6 0.25 0.15 0.5 0.31 0.19 0.4 0.37 0.23 0.3 0.43 0.27 0.06 0.58 0.36 0.85 0.08 0.07000000000000001 0.85 0.08 0.07000000000000001 0.85 0.08 0.07000000000000001 0.78 0.12 0.1 0.2 0.43 0.37 0.85 0.08 0.07000000000000001 0.85 0.08 0.07000000000000001 0.76 0.13 0.11 0.66 0.18 0.16 0.17 0.45 0.38 0.84 0.09 0.07000000000000001 0.74 0.14 0.12 0.64 0.19 0.17 0.54 0.25 0.21 0.13 0.47 0.4 0.72 0.15 0.13 0.62 0.21 0.17 0.52 0.26 0.22 0.42 0.31 0.27 0.1 0.49 0.41 0.6 0.22 0.18 0.5 0.27 0.23 0.4 0.32 0.28 0.3 0.38 0.32 0.06 0.51 0.43 0.85 0.05 0.1 0.85 0.05 0.1 0.85 0.05 0.1 0.78 0.07000000000000001 0.15 0.2 0.24 0.5600000000000001 0.85 0.05 0.1 0.85 0.05 0.1 0.76 0.07000000000000001 0.17 0.66 0.1 0.24 0.17 0.25 0.58 0.84 0.05 0.11 0.74 0.08 0.18 0.64 0.11 0.25 0.54 0.14 0.32 0.13 0.26 0.61 0.72 0.08 0.2 0.62 0.11 0.27 0.52 0.14 0.34 0.42 0.17 0.41 0.1 0.27 0.63 0.6 0.12 0.28 0.5 0.15 0.35 0.4 0.18 0.42 0.3 0.21 0.49 0.06 0.28 0.66 0.85 0.04 0.11 0.85 0.04 0.11 0.85 0.04 0.11 0.85 0.04 0.11 0.25 0.19 0.5600000000000001 0.85 0.04 0.11 0.85 0.04 0.11 0.85 0.04 0.11 0.8100000000000001 0.05 0.14 0.21 0.2 0.59 0.85 0.04 0.11 0.85 0.04 0.11 0.79 0.05 0.16 0.6899999999999999 0.08 0.23 0.18 0.21 0.61 0.85 0.04 0.11 0.77 0.06 0.17 0.67 0.08 0.25 0.57 0.11 0.32 0.14 0.21 0.65 0.75 0.06 0.19 0.65 0.09 0.26 0.55 0.11 0.34 0.45 0.14 0.41 0.1 0.22 0.68 0.85 0.03 0.12 0.85 0.03 0.12 0.85 0.03 0.12 0.85 0.03 0.12 0.25 0.15 0.6 0.85 0.03 0.12 0.85 0.03 0.12 0.85 0.03 0.12 0.8100000000000001 0.04 0.15 0.21 0.16 0.63 0.85 0.03 0.12 0.85 0.03 0.12 0.79 0.04 0.17 0.6899999999999999 0.06 0.25 0.18 0.16 0.66 0.85 0.03 0.12 0.77 0.05 0.18 0.67 0.07000000000000001 0.26 0.57 0.09 0.34 0.14 0.17 0.6899999999999999 0.75 0.05 0.2 0.65 0.07000000000000001 0.28 0.55 0.09 0.36 0.45 0.11 0.44 0.1 0.18 0.72</probabilities>
+		</cpt>
+	</nodes>
+	<extensions>
+		<genie version="1.0" app="GeNIe 5.0.5310.0 ACADEMIC" name="DockingSpecializedBN">
+			<node id="Current">
+				<name>Current</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>876 271 976 311</position>
+				<barchart width="128" height="64" />
+			</node>
+			<node id="BatteryLevel">
+				<name>Battery Level</name>
+				<interior color="f0f0ff" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>552 411 652 451</position>
+				<barchart width="128" height="80" />
+			</node>
+			<node id="USBLStrength">
+				<name>USBL Strength</name>
+				<interior color="f0f0ff" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>641 281 741 321</position>
+				<barchart width="128" height="80" />
+			</node>
+			<node id="PoseEstimationQuality">
+				<name>Pose Estimation Quality</name>
+				<interior color="f0f0ff" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>655 409 755 449</position>
+				<barchart width="159" height="64" />
+			</node>
+			<node id="Speed">
+				<name>Speed</name>
+				<interior color="f0f0ff" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>721 691 821 731</position>
+				<barchart width="128" height="64" />
+			</node>
+			<node id="Altitude">
+				<name>Altitude</name>
+				<interior color="f0f0ff" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>476 537 576 577</position>
+				<barchart width="128" height="64" />
+			</node>
+			<node id="CameraQuality">
+				<name>Camera Quality</name>
+				<interior color="f0f0ff" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>752 341 852 381</position>
+				<barchart width="128" height="80" />
+			</node>
+			<node id="Fatigue">
+				<name>Fatigue</name>
+				<interior color="ffe0e0" />
+				<outline color="800000" />
+				<font color="000000" name="Arial" size="8" />
+				<position>289 442 389 482</position>
+				<barchart width="128" height="64" />
+			</node>
+			<node id="Stress">
+				<name>Stress</name>
+				<interior color="ffe0e0" />
+				<outline color="800000" />
+				<font color="000000" name="Arial" size="8" />
+				<position>425 430 525 470</position>
+				<barchart width="128" height="64" />
+			</node>
+			<node id="Attention">
+				<name>Attention</name>
+				<interior color="ffe0e0" />
+				<outline color="800000" />
+				<font color="000000" name="Arial" size="8" />
+				<position>374 549 474 589</position>
+				<barchart width="128" height="64" />
+			</node>
+			<node id="CognitiveLoad">
+				<name>Cognitive Load</name>
+				<interior color="ffcccc" />
+				<outline color="800000" />
+				<font color="000000" name="Arial" size="8" />
+				<position>203 555 303 595</position>
+				<barchart width="128" height="80" />
+			</node>
+			<node id="SituationalAwareness">
+				<name>Situational Awareness</name>
+				<interior color="ffcccc" />
+				<outline color="800000" />
+				<font color="000000" name="Arial" size="8" />
+				<position>342 664 442 704</position>
+				<barchart width="159" height="80" />
+			</node>
+			<node id="HumanDecisionReliability">
+				<name>Human Decision Reliability</name>
+				<interior color="ff9999" />
+				<outline color="800000" />
+				<font color="000000" name="Arial" size="8" />
+				<position>379 803 479 843</position>
+				<barchart active="true" width="159" height="96" />
+			</node>
+			<node id="NavigationReliability">
+				<name>Navigation Reliability</name>
+				<interior color="ccffcc" />
+				<outline color="008000" />
+				<font color="000000" name="Arial" size="8" />
+				<position>587 591 687 631</position>
+				<barchart width="128" height="90" />
+			</node>
+			<node id="PerceptionReliability">
+				<name>Perception Reliability</name>
+				<interior color="ccffcc" />
+				<outline color="008000" />
+				<font color="000000" name="Arial" size="8" />
+				<position>694 552 826 595</position>
+				<barchart width="128" height="90" />
+			</node>
+			<node id="ControlStability">
+				<name>Control Stability</name>
+				<interior color="ccffcc" />
+				<outline color="008000" />
+				<font color="000000" name="Arial" size="8" />
+				<position>540 702 640 742</position>
+				<barchart width="128" height="90" />
+			</node>
+			<node id="AutonomousControlReliability">
+				<name>Autonomous Control Reliability</name>
+				<interior color="99ff99" />
+				<outline color="008000" />
+				<font color="000000" name="Arial" size="8" />
+				<position>652 811 752 851</position>
+				<barchart active="true" width="179" height="96" />
+			</node>
+			<node id="ArUcoMarkersVisible">
+				<name>ArUco Markers Visible</name>
+				<interior color="ffffcc" />
+				<outline color="808000" />
+				<font color="000000" name="Arial" size="8" />
+				<position>974 344 1074 384</position>
+				<barchart width="128" height="64" />
+			</node>
+			<node id="DockingStationDetection">
+				<name>Docking Station Detection</name>
+				<interior color="ffffcc" />
+				<outline color="808000" />
+				<font color="000000" name="Arial" size="8" />
+				<position>1094 494 1242 544</position>
+				<barchart width="159" height="64" />
+			</node>
+			<node id="DockingClearance">
+				<name>Docking Clearance</name>
+				<interior color="ffffcc" />
+				<outline color="808000" />
+				<font color="000000" name="Arial" size="8" />
+				<position>1122 340 1260 385</position>
+				<barchart width="128" height="64" />
+			</node>
+			<node id="PositionError">
+				<name>Position Error</name>
+				<interior color="ffffcc" />
+				<outline color="808000" />
+				<font color="000000" name="Arial" size="8" />
+				<position>911 496 1011 536</position>
+				<barchart width="128" height="64" />
+			</node>
+			<node id="VisualGuidanceQuality">
+				<name>Visual Guidance Quality</name>
+				<interior color="ffffcc" />
+				<outline color="808000" />
+				<font color="000000" name="Arial" size="8" />
+				<position>1017 656 1145 729</position>
+				<barchart width="159" height="90" />
+			</node>
+			<node id="ApproachFeasibility">
+				<name>Approach Feasibility</name>
+				<interior color="ffffcc" />
+				<outline color="808000" />
+				<font color="000000" name="Arial" size="8" />
+				<position>822 644 954 702</position>
+				<barchart width="128" height="64" />
+			</node>
+			<node id="DockingReliability">
+				<name>Docking Reliability</name>
+				<interior color="ffff99" />
+				<outline color="808000" />
+				<font color="000000" name="Arial" size="8" />
+				<position>901 813 1001 853</position>
+				<barchart active="true" width="159" height="96" />
+			</node>
+			<node id="DockingModeRecommendation">
+				<name>Docking Mode Recommendation</name>
+				<interior color="ffd700" />
+				<outline color="ff0000" />
+				<font color="000000" name="Arial" size="10" bold="true" />
+				<position>654 977 754 1017</position>
+				<barchart active="true" width="254" height="82" />
+			</node>
+			<textbox>
+				<caption>A–PT.1 (continuous telemetry)</caption>
+				<font color="ff0000" name="Arial" size="10" align="center" />
+				<position>552 358 619 403</position>
+			</textbox>
+			<textbox>
+				<caption>A1.1 (navigation sensing)</caption>
+				<font color="ff0000" name="Arial" size="10" align="center" />
+				<position>652 228 715 273</position>
+			</textbox>
+			<textbox>
+				<caption>A1.3 (motion execution)</caption>
+				<font color="ff0000" name="Arial" size="10" align="center" />
+				<position>727 640 787 685</position>
+			</textbox>
+			<textbox>
+				<caption>A2.2 (camera initialization)</caption>
+				<font color="ff0000" name="Arial" size="10" align="center" />
+				<position>762 292 834 337</position>
+			</textbox>
+			<textbox>
+				<caption>A–PT.1 (continuous telemetry)</caption>
+				<font color="ff0000" name="Arial" size="10" align="center" />
+				<position>495 484 562 529</position>
+			</textbox>
+			<textbox>
+				<caption>A3.1 (marker detection)</caption>
+				<font color="ff0000" name="Arial" size="10" align="center" />
+				<position>985 308 1060 338</position>
+			</textbox>
+			<textbox>
+				<caption>A3.2 (detection assessment, D2)</caption>
+				<font color="ff0000" name="Arial" size="10" />
+				<position>1153 458 1252 488</position>
+			</textbox>
+			<textbox>
+				<caption>A5.1 (clearance sensing)</caption>
+				<font color="ff0000" name="Arial" size="10" align="center" />
+				<position>1139 305 1230 335</position>
+			</textbox>
+			<textbox>
+				<caption>A4.2 (pose validation, D3)</caption>
+				<font color="ff0000" name="Arial" size="10" align="center" />
+				<position>960 456 1023 501</position>
+			</textbox>
+			<textbox>
+				<caption>A1.1, A4.1 (localization inputs)</caption>
+				<font color="ff0000" name="Arial" size="10" align="center" />
+				<position>656 346 725 391</position>
+			</textbox>
+			<textbox>
+				<caption>A1, A4 (navigation execution quality)</caption>
+				<font color="ff0000" name="Arial" size="10" align="center" />
+				<position>593 528 656 588</position>
+			</textbox>
+			<textbox>
+				<caption>A3 (perception execution quality)</caption>
+				<font color="ff0000" name="Arial" size="10" align="center" />
+				<position>696 488 760 548</position>
+			</textbox>
+			<textbox>
+				<caption>A1.3 (control execution quality)</caption>
+				<font color="ff0000" name="Arial" size="10" align="center" />
+				<position>498 663 572 708</position>
+			</textbox>
+			<textbox>
+				<caption>A7A / A7S / A7H (mode-dependent execution)</caption>
+				<font color="ff0000" name="Arial" size="10" align="center" />
+				<position>616 887 780 917</position>
+			</textbox>
+			<textbox>
+				<caption>A4 (visual guidance assessment)</caption>
+				<font color="ff0000" name="Arial" size="10" align="center" />
+				<position>1001 594 1076 639</position>
+			</textbox>
+			<textbox>
+				<caption>A5 (approach decision, D4)</caption>
+				<font color="ff0000" name="Arial" size="10" align="center" />
+				<position>813 612 890 642</position>
+			</textbox>
+			<textbox>
+				<caption>A6, A8, A9 (outcome assessment)</caption>
+				<font color="ff0000" name="Arial" size="10" align="center" />
+				<position>901 895 1023 925</position>
+			</textbox>
+			<textbox>
+				<caption>H1 (sustained monitoring)</caption>
+				<font color="ff0000" name="Arial" size="10" align="center" />
+				<position>432 397 512 427</position>
+			</textbox>
+			<textbox>
+				<caption>H1 (sustained monitoring)</caption>
+				<font color="ff0000" name="Arial" size="10" align="center" />
+				<position>305 406 385 436</position>
+			</textbox>
+			<textbox>
+				<caption>H1.2, H2.2, H3.1 (assessment tasks)</caption>
+				<font color="ff0000" name="Arial" size="10" align="center" />
+				<position>368 599 483 629</position>
+			</textbox>
+			<textbox>
+				<caption>H1.2 (mental workload assessment)</caption>
+				<font color="ff0000" name="Arial" size="10" align="center" />
+				<position>189 520 318 550</position>
+			</textbox>
+			<textbox>
+				<caption>H1.3 (situation evaluation)</caption>
+				<font color="ff0000" name="Arial" size="10" align="center" />
+				<position>307 708 391 738</position>
+			</textbox>
+			<textbox>
+				<caption>A6.3 ↔ H4 (recommendation + authorization)</caption>
+				<font color="ff0000" name="Arial" size="10" align="center" />
+				<position>623 1055 803 1085</position>
+			</textbox>
+			<textbox>
+				<caption>H1.2, H2.2, H3.1 (Human, assessments)</caption>
+				<font color="ff0000" name="Arial" size="10" align="center" />
+				<position>379 889 476 934</position>
+			</textbox>
+			<textbox>
+				<caption>A–PT.1 (continuous telemetry)</caption>
+				<font color="ff0000" name="Arial" size="10" align="center" />
+				<position>890 222 957 267</position>
+			</textbox>
+		</genie>
+	</extensions>
+</smile>

@@ -1,0 +1,9 @@
+fish_detection_node:
+  ros__parameters:
+    camera_topic: /blueye/camera_1/image_raw
+    weights_path: merge_yolov4.weights
+    config_path: yolov4.cfg
+    confidence_threshold: 0.55
+    nms_threshold: 0.7
+    publish_annotated: false
+    display_window: false
